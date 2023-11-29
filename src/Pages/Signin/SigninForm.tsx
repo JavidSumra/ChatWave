@@ -43,8 +43,9 @@ const SignupForm = () => {
         body: JSON.stringify({ email, password }),
       });
       const data = await response.json();
-      if (data?.msg) {
-        throw new Error(data?.errors);
+      console.log(data?.error);
+      if (data?.error) {
+        throw data?.error;
       }
 
       if (!response.ok) {
@@ -53,16 +54,19 @@ const SignupForm = () => {
       console.log(data?.User);
       localStorage.setItem("authToken", data?.token);
       localStorage.setItem("userData", JSON.stringify(data?.User));
-      toast.success(`Welcome ${data?.User.firstName}`, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
+      toast.success(
+        `Welcome back ${data?.User.firstName} ${data?.User.lastName}`,
+        {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        }
+      );
       navigate("/chat");
     } catch (error) {
       console.log(`Operation Failed:${error}`);
