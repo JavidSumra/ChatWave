@@ -51,7 +51,7 @@ const SignupForm = () => {
       if (!response.ok) {
         throw new Error("Signup Failed");
       }
-      console.log(data?.User);
+      // console.log(data?.User);
       localStorage.setItem("authToken", data?.token);
       localStorage.setItem("userData", JSON.stringify(data?.User));
       toast.success(
