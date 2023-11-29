@@ -43,15 +43,14 @@ const SignupForm = () => {
         body: JSON.stringify({ email, password }),
       });
       const data = await response.json();
-      console.log(data);
       if (data?.error) {
-        throw data?.error;
+        throw new Error(data?.error);
       }
 
       if (!response.ok) {
         throw new Error("Signup Failed");
       }
-      // console.log(data?.User);
+      console.log(data?.User);
       localStorage.setItem("authToken", data?.token);
       localStorage.setItem("userData", JSON.stringify(data?.User));
       toast.success(
