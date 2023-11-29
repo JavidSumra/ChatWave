@@ -43,7 +43,7 @@ const SignupForm = () => {
         body: JSON.stringify({ email, password }),
       });
       const data = await response.json();
-      console.log(data?.error);
+      console.log(data);
       if (data?.error) {
         throw data?.error;
       }
