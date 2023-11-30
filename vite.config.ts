@@ -50,6 +50,10 @@ export default ({ mode }) => {
       }),
     ],
 
+    optimizeDeps: {
+      exclude: ["react-nice-avatar"],
+    },
+
     define: {
       "process.env.NODE_ENV": `"${mode}"`,
     },

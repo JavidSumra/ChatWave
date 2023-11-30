@@ -89,7 +89,7 @@ const SignupForm = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="text-3xl font-bold text-left text-gray-800 mb-8 pr-6">
-        Signup
+        Signin
       </div>
       <div>
         <label
@@ -135,7 +135,7 @@ const SignupForm = () => {
         <div className="w-full my-3">
           <input
             type="submit"
-            value="Signup"
+            value="Login"
             className="w-full text-xl p-2 bg-blue-500 text-white font-bold rounded cursor-pointer"
           />
         </div>
@@ -144,12 +144,12 @@ const SignupForm = () => {
             OR
           </legend>
           <div className="flex text-base items-center justify-center flex-wrap ">
-            Already have an Account?
+            Don't have an Account?
             <a
-              href="/login"
+              href="/signup"
               className="text-blue-500 font-bold mx-2 hover:underline"
             >
-              Login
+              Register
             </a>
           </div>
         </fieldset>

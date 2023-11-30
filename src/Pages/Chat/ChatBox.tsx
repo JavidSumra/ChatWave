@@ -2,7 +2,7 @@ import ChatInput from "./ChatInput";
 
 const ChatBox = () => {
   return (
-    <div className="bg-[#0e0b1c] w-full h-[90%] text-white font-semibold">
+    <div className="bg-[#0e0b1c] w-full h-[89.5%] text-white font-semibold">
       <div className="h-full overflow-y-auto py-2 mx-2">
         <div className="chat chat-start">
           <div className="chat-image avatar">

@@ -3,8 +3,8 @@ import { InformationCircleIcon } from "@heroicons/react/24/solid";
 
 const ChatHeader = () => {
   return (
-    <div className="flex items-center justify-between bg-[#131021] w-full border-b border-gray-700 h-[10%]">
-      <div className="flex w-[19%] items-center justify-around mx-2">
+    <div className="flex items-center justify-between bg-[#131021] w-full border-b border-gray-700 dark:border-gray-900 h-[10.5%]">
+      <div className="flex w-1/4 items-center justify-evenly mx-2">
         <div className="relative flex items-center justify-center">
           <div className="text-xl w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
             JS
@@ -16,7 +16,7 @@ const ChatHeader = () => {
         </div>
         <div className="text-gray-300">
           <div className="text-lg">Javid Sumra</div>
-          <div className="text-sm">Last Seen 1:25PM</div>
+          <div className="text-xs">Last Seen 1:25PM</div>
         </div>
       </div>
       <div className="flex mx-4 justify-around w-[10%]">

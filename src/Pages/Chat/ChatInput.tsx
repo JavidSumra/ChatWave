@@ -1,5 +1,13 @@
 import { useState } from "react";
 import RandomEmoji from "./Emojigenerator";
+import { io } from "socket.io-client";
+
+const URL =
+  process.env.NODE_ENV === "production"
+    ? "https://main--chatwavejavid.netlify.app/"
+    : "http://localhost:3001";
+
+const socket = io(URL);
 
 const ChatInput = () => {
   const [emoji, setEmoji] = useState(RandomEmoji());
@@ -8,9 +16,12 @@ const ChatInput = () => {
   const handleClick = () => {
     setUserInput(userInput + emoji);
   };
+  const sendMsg = () => {
+    socket.emit("send_msg", { message: userInput });
+  };
   return (
     <div>
-      <div className="px-4 pt-4 mb-2 sm:mb-0">
+      <div className="px-4 pt-4 mb-2 sm:mb-0 w-[90%]">
         <div className="relative flex">
           <span className="absolute inset-y-0 flex items-center">
             <button
@@ -95,6 +106,7 @@ const ChatInput = () => {
             </button>
             <button
               type="button"
+              onClick={sendMsg}
               className="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-gray-200 focus:outline-none"
             >
               <svg
