@@ -7,7 +7,7 @@ import { CurrentFriendProvider } from "./context/CurrentFriend";
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
-  console.log(theme);
+  // console.log(theme);
   return (
     <div
       className={`flex font-[Poppins] w-screen ${

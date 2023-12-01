@@ -30,9 +30,9 @@ const ChatInput = () => {
 
   useEffect(() => {
     socket.emit("addUser", User._id);
-    socket.on("getUsers", (users: any) => {
-      console.log(users);
-    });
+    // socket.on("getUsers", (users: any) => {
+    //   // console.log(users);
+    // });
   }, []);
   return (
     <div>
