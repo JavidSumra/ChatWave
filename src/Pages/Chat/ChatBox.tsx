@@ -1,5 +1,5 @@
 import ChatInput from "./ChatInput";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { FriendContext } from "../../context/CurrentFriend";
 import { nanoid } from "nanoid";
 import { Message } from "../../context/Messages";
