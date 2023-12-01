@@ -12,8 +12,8 @@ const ChatHeader = () => {
       <div className="flex w-1/4 items-center justify-evenly mx-2">
         <div className="relative flex items-center justify-center">
           <div className="text-xl w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
-            {currentFriend.firstName.charAt(0) +
-              currentFriend.lastName.charAt(0)}
+            {currentFriend.firstName.charAt(0).toUpperCase() +
+              currentFriend.lastName.charAt(0).toUpperCase()}
           </div>
           <span className="relative flex h-3 w-3 right-2 top-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>

@@ -13,11 +13,11 @@ const initialData: FriendData = {
   created_at: "",
   updated_at: "",
 };
-interface ThemeContextProps {
+interface CurrentFriendContextProps {
   currentFriend: FriendData;
   setCurrentFriend: (User: FriendData) => void;
 }
-const FriendContext = createContext<ThemeContextProps>({
+const FriendContext = createContext<CurrentFriendContextProps>({
   currentFriend: initialData,
   setCurrentFriend: () => {},
 });

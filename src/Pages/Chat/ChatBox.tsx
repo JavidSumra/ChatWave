@@ -1,42 +1,46 @@
 import ChatInput from "./ChatInput";
+import { useContext, useEffect } from "react";
+import { FriendContext } from "../../context/CurrentFriend";
+import { nanoid } from "nanoid";
+import { Message } from "../../context/Messages";
+import { MessageContext } from "../../context/Messages";
 
 const ChatBox = () => {
+  const User = JSON.parse(localStorage.getItem("userData") ?? "");
+  const { currentFriend } = useContext(FriendContext);
+  const { messages } = useContext(MessageContext);
+
   return (
-    <div className="bg-[#0e0b1c] w-full h-[89.5%] text-white font-semibold">
-      <div className="h-full overflow-y-auto py-2 mx-2">
-        <div className="chat chat-start">
-          <div className="chat-image avatar">
-            <div className="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS chat bubble component"
-                src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-              />
+    <div className="bg-[#0e0b1c] w-full max-h-[89.5%] h-full text-white font-semibold overflow-hidden">
+      <div className="h-2/3 w-full py-2 mx-2 overflow-y-auto">
+        {messages.map((message: Message) => (
+          <div
+            className={`chat ${
+              message.senderId === User._id ? "chat-end mx-2" : "chat-start"
+            } p-2 m-2"`}
+            key={nanoid()}
+          >
+            <div className="chat-image avatar">
+              <div className="w-10 h-10 rounded-full bg-gray-800">
+                <div className="flex items-center justify-center h-full">
+                  {message.senderId === User._id
+                    ? User.firstName.charAt(0).toUpperCase() +
+                      User.lastName.charAt(0).toUpperCase()
+                    : currentFriend.firstName.charAt(0).toUpperCase() +
+                      currentFriend.lastName.charAt(0).toUpperCase()}
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="chat-header">
-            Obi-Wan Kenobi
-            <time className="text-xs opacity-50 mx-2">12:45</time>
-          </div>
-          <div className="chat-bubble">You were the Chosen One!</div>
-          <div className="chat-footer opacity-50">Delivered</div>
-        </div>
-        {/* Chat End */}
-        <div className="chat chat-end">
-          <div className="chat-image avatar">
-            <div className="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS chat bubble component"
-                src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-              />
+            <div className="chat-header">
+              {message.senderId === User._id
+                ? User.firstName + " " + User.lastName
+                : currentFriend.firstName + " " + currentFriend.lastName}
+              <time className="text-xs opacity-50 mx-2">12:45</time>
             </div>
+            <div className="chat-bubble">{message.msg}</div>
+            <div className="chat-footer opacity-50">Delivered</div>
           </div>
-          <div className="chat-header">
-            Anakin
-            <time className="text-xs opacity-50 mx-2">12:46</time>
-          </div>
-          <div className="chat-bubble">It's Daisy UI</div>
-          <div className="chat-footer opacity-50">Seen at 12:46</div>
-        </div>
+        ))}
       </div>
       <div className="absolute bottom-0 w-4/6 mb-4">
         <ChatInput />

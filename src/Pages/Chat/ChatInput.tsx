@@ -1,12 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import RandomEmoji from "./Emojigenerator";
+import socket from "../../context/socket";
 
 import { FriendContext } from "../../context/CurrentFriend";
-import socket from "../../context/socket";
+import { Message, MessageContext } from "../../context/Messages";
 
 const ChatInput = () => {
   const User = JSON.parse(localStorage.getItem("userData") ?? "");
+
   const { currentFriend } = useContext(FriendContext);
+  const { messages, setMessages } = useContext(MessageContext);
 
   const [emoji, setEmoji] = useState(RandomEmoji());
   const [userInput, setUserInput] = useState("");
@@ -20,20 +23,18 @@ const ChatInput = () => {
       receiverId: currentFriend._id,
       msg: userInput,
     });
+    setMessages([...messages, { senderId: User._id, msg: userInput }]);
+    setUserInput("");
   };
-  useEffect(() => {
-    socket.on("receive_msg", (data) => {
-      console.log(data);
-      alert(data.msg);
-    });
-  }, [socket]);
 
   useEffect(() => {
     socket.emit("addUser", User._id);
-    // socket.on("getUsers", (users: any) => {
-    //   // console.log(users);
-    // });
   }, []);
+  useEffect(() => {
+    socket.on("receive_msg", (data: Message) => {
+      setMessages([...messages, data]);
+    });
+  }, [socket]);
   return (
     <div>
       <div
