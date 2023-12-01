@@ -1,14 +1,21 @@
+import { useContext } from "react";
 import socket from "../../context/socket";
+import { FriendContext } from "../../context/CurrentFriend";
+// Todo : import { FriendInterface } from "."; Implement Type
 
 const User = (User: any) => {
-  const joinRoom = (id: string) => {
+  // const userData = JSON.parse(localStorage.getItem("userData") ?? "");
+  const { setCurrentFriend } = useContext(FriendContext);
+
+  const joinRoom = (id: string, User: any) => {
     socket.emit("join_room", { id });
+    setCurrentFriend(User);
   };
   const { firstName, lastName, _id } = User.User;
   return (
     <div
       className="flex w-full hover:bg-purple-900/25 rounded items-center justify-between p-2 cursor-pointer"
-      onClick={() => joinRoom(_id)}
+      onClick={() => joinRoom(_id, User.User)}
     >
       <div>
         <div className="relative flex items-center justify-center">

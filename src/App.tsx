@@ -3,6 +3,7 @@ import Chat from "./Pages/Chat";
 import FriedSidebar from "./Pages/FriendList";
 import { ThemeContext } from "./context/theme";
 import { useContext } from "react";
+import { CurrentFriendProvider } from "./context/CurrentFriend";
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
@@ -13,9 +14,11 @@ const App = () => {
         theme === "dark" ? "dark" : ""
       }`}
     >
-      <User />
-      <Chat />
-      <FriedSidebar />
+      <CurrentFriendProvider>
+        <User />
+        <Chat />
+        <FriedSidebar />
+      </CurrentFriendProvider>
     </div>
   );
 };

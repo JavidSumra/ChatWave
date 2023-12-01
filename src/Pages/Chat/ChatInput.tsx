@@ -1,15 +1,13 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import RandomEmoji from "./Emojigenerator";
-import { io } from "socket.io-client";
 
-const URL =
-  process.env.NODE_ENV === "production"
-    ? "https://main--chatwavejavid.netlify.app/"
-    : "http://localhost:3001";
-
-const socket = io(URL);
+import { FriendContext } from "../../context/CurrentFriend";
+import socket from "../../context/socket";
 
 const ChatInput = () => {
+  const User = JSON.parse(localStorage.getItem("userData") ?? "");
+  const { currentFriend } = useContext(FriendContext);
+
   const [emoji, setEmoji] = useState(RandomEmoji());
   const [userInput, setUserInput] = useState("");
 
@@ -17,11 +15,32 @@ const ChatInput = () => {
     setUserInput(userInput + emoji);
   };
   const sendMsg = () => {
-    socket.emit("send_msg", { message: userInput });
+    socket.emit("send_msg", {
+      senderId: User._id,
+      receiverId: currentFriend._id,
+      msg: userInput,
+    });
   };
+  useEffect(() => {
+    socket.on("receive_msg", (data) => {
+      console.log(data);
+      alert(data.msg);
+    });
+  }, [socket]);
+
+  useEffect(() => {
+    socket.emit("addUser", User._id);
+    socket.on("getUsers", (users: any) => {
+      console.log(users);
+    });
+  }, []);
   return (
     <div>
-      <div className="px-4 pt-4 mb-2 sm:mb-0 w-[90%]">
+      <div
+        className={`px-4 pt-4 mb-2 sm:mb-0 w-[90%] ${
+          currentFriend._id ? "" : "hidden"
+        }`}
+      >
         <div className="relative flex">
           <span className="absolute inset-y-0 flex items-center">
             <button

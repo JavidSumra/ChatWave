@@ -11,5 +11,6 @@ export default function ProtectedRoute({
   if (isAuth) {
     return <>{children}</>;
   }
+  console.log(isAuth);
   return <Navigate to="/signin" replace state={{ referrer: pathname }} />;
 }

@@ -3,7 +3,7 @@ import AddNewFriend from "./AddNewFriend";
 import Friend from "./Friend";
 import { API_ENDPOINT } from "../../config/constant";
 
-interface Friend {
+export interface FriendInterface {
   _id: string;
   firstName: string;
   lastName: string;
@@ -15,7 +15,7 @@ interface Friend {
 
 const FriedSidebar = () => {
   const authToken = localStorage.getItem("authToken");
-  const [friendList, setFriendList] = useState<Friend[] | []>([]);
+  const [friendList, setFriendList] = useState<FriendInterface[] | []>([]);
   useEffect(() => {
     fetch(`${API_ENDPOINT}/chat/friendList`, {
       method: "GET",

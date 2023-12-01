@@ -4,7 +4,7 @@ import App from "../App";
 import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
-  { path: "/", element: <Navigate to="/signin" replace /> },
+  { path: "/", element: <Navigate to="/chat" replace /> },
   {
     path: "/signin",
     element: <Signin />,
