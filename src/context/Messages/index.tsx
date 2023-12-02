@@ -2,6 +2,7 @@ import React, { createContext, useState } from "react";
 
 export interface Message {
   senderId: string;
+  receiverId: string;
   msg: string;
 }
 

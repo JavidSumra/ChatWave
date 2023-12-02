@@ -23,7 +23,10 @@ const ChatInput = () => {
       receiverId: currentFriend._id,
       msg: userInput,
     });
-    setMessages([...messages, { senderId: User._id, msg: userInput }]);
+    setMessages([
+      ...messages,
+      { senderId: User._id, receiverId: currentFriend._id, msg: userInput },
+    ]);
     setUserInput("");
   };
 
