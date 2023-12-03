@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { ThemeContext } from "../../context/theme";
 import { useNavigate } from "react-router-dom";
 import {
-  UserIcon,
   PhoneIcon,
   AtSymbolIcon,
   InformationCircleIcon,

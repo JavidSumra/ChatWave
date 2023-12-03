@@ -63,3 +63,14 @@ The Chatwave web app is a real-time chat application built using the MERN (Mongo
       npm run dev
     ```
 8. Open your browser and visit `http://localhost:3007` to access the ChatWave web app.
+
+
+# Contributing
+
+  `If you would like to contribute to the project, please follow the steps below:`
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push the changes to your fork.
+5. Submit a pull request.
