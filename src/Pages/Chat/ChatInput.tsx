@@ -17,24 +17,55 @@ const ChatInput = () => {
   const handleClick = () => {
     setUserInput(userInput + emoji);
   };
+
   const sendMsg = () => {
     socket.emit("send_msg", {
       senderId: User._id,
       receiverId: currentFriend._id,
       msg: userInput,
     });
-    setMessages([...messages, { senderId: User._id, msg: userInput }]);
+    setMessages([
+      ...messages,
+      { senderId: User._id, receiverId: currentFriend._id, msg: userInput },
+    ]);
     setUserInput("");
+  };
+
+  const handleKeyDown = (event: any) => {
+    if (event.key === "Enter") {
+      if (event.shiftKey) {
+        // Insert a line break without submitting the form
+        setUserInput(userInput + "\n");
+        // Prevent the default behavior of Enter key (e.g., submitting a form)
+        event.preventDefault();
+      } else if (userInput.trim().length > 0) {
+        // Send the message when Enter is pressed without Shift
+        sendMsg();
+      }
+    }
   };
 
   useEffect(() => {
     socket.emit("addUser", User._id);
   }, []);
+
   useEffect(() => {
     socket.on("receive_msg", (data: Message) => {
-      setMessages([...messages, data]);
+      const { senderId, receiverId, msg } = data;
+      setMessages([...messages, { senderId, receiverId, msg }]);
     });
-  }, [socket]);
+  }, [socket, messages, setMessages]);
+
+  useEffect(() => {
+    // Attach the event listener when the component mounts
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Detach the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [userInput]);
+
   return (
     <div>
       <div
@@ -64,12 +95,11 @@ const ChatInput = () => {
               </svg>
             </button>
           </span>
-          <input
-            type="text"
+          <textarea
             value={userInput}
             onChange={(event) => setUserInput(event.target.value)}
             placeholder="Write your message!"
-            className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 focus:text-white placeholder-gray-600 pl-12 bg-purple-950/70 focus:bg-purple-950/75 rounded-md py-3"
+            className="w-full resize-none focus:outline-none focus:placeholder-gray-400 text-gray-600 focus:text-white placeholder-gray-600 pl-12 bg-purple-950/70 focus:bg-purple-950/75 rounded-md py-3"
           />
           <div className="absolute right-0 items-center inset-y-0 hidden sm:flex">
             <button
