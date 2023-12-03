@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { ThemeContext } from "../../context/theme";
 import { useNavigate } from "react-router-dom";
 import {
-  UserIcon,
   PhoneIcon,
   AtSymbolIcon,
   InformationCircleIcon,
@@ -37,7 +36,10 @@ const UserDetail = () => {
   return (
     <div className="w-full bg-gray-900 h-screen">
       <div className="flex items-center justify-center h-1/4 border-b border-gray-300">
-        <UserIcon className="w-6 h-6 text-white " />
+        <div className="text-4xl font-semibold w-20 h-20 rounded-full bg-gray-700 flex items-center justify-center">
+          {User.firstName.charAt(0).toUpperCase() +
+            User.lastName.charAt(0).toUpperCase()}
+        </div>
       </div>
       <div className="border-b border-gray-300">
         <div className="m-4 flex items-center w-full">

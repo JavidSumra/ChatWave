@@ -1,30 +1,76 @@
-# React + TypeScript + Vite
+# Chatwave Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+The Chatwave web app is a real-time chat application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It allows users to communicate with each other in real-time, creating a seamless and interactive chat experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- [x] Real-time messaging: Users can send and receive messages instantly.
+- [x] User authentication: Secure user authentication using JWT (JSON Web Tokens).
+- [ ] MongoDB database: Persistent storage for chat messages and user data.
+- [ ] Responsive design: A user-friendly interface that works seamlessly on various devices. 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Technologies Used
 
-- Configure the top-level `parserOptions` property like this:
+- **MongoDB**: Database to store user information and chat messages.
+- **Express.js**: Backend framework for handling server-side logic.
+- **React.js**: Frontend library for building the user interface.
+- **Node.js**: Runtime environment for server-side JavaScript.
+- **Socket.io**: Real-time bidirectional event-based communication.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Installation
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/JavidSumra/ChatWave
+   ```
+2. Clone the Backend repository:
+
+    ```bash
+      git clone https://github.com/JavidSumra/ChatWave_Backend
+    ```
+3. Navigate to the project directory:
+
+    ```bash
+      cd ChatWave
+    ```
+4. Install dependencies for both the client and server:
+
+    ```bash
+      cd ChatWave && npm install
+      cd ../ChatWave_Backend && npm install
+    ```
+5. Create a `.env` file in the `ChatWave_Backend` directory with the following content:
+
+    ```bash
+      SECRET_TOKEN = JWT_SECRET_TOKEN
+      email = YOUR_EMAIL
+      Password = YOUR_APP_PASSWORD_FOR_EMAIL
+      MONGO_URL = YOUR_MONGODB_CONNECTION_STRING
+    ```
+6. Create a `.env` file in the `ChatWave` directory with the following content:   
+     ```bash
+     VITE_API_ENDPOINT = http://localhost:3007
+     ``` 
+7. Start the `server` and `client`:
+    ```bash
+      # In the ChatWave_Backend directory
+      npm run start
+
+      # In the ChatWave directory
+      npm run dev
+    ```
+8. Open your browser and visit `http://localhost:3007` to access the ChatWave web app.
+
+
+# Contributing
+
+  `If you would like to contribute to the project, please follow the steps below:`
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push the changes to your fork.
+5. Submit a pull request.
