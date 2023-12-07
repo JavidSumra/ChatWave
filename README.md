@@ -6,10 +6,10 @@ The Chatwave web app is a real-time chat application built using the MERN (Mongo
 
 ## Features
 
-- [x] Real-time messaging: Users can send and receive messages instantly.
-- [x] User authentication: Secure user authentication using JWT (JSON Web Tokens).
-- [ ] MongoDB database: Persistent storage for chat messages and user data.
-- [ ] Responsive design: A user-friendly interface that works seamlessly on various devices. 
+- :white_check_mark: Real-time messaging: Users can send and receive messages instantly.
+- :white_check_mark: User authentication: Secure user authentication using JWT (JSON Web Tokens).
+- :x: MongoDB database: Persistent storage for chat messages and user data.
+- :x: Responsive design: A user-friendly interface that works seamlessly on various devices. 
 
 ## Technologies Used
 
