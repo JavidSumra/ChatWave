@@ -1,5 +1,5 @@
 import SigninForm from "./SigninForm";
-import SignupIMG from "../../assets/Signup_Page.png";
+import SignupIMG from "../../assets/Signin_Page.png";
 
 const Signup = () => {
   return (
