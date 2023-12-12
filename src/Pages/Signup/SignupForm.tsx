@@ -4,6 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 interface UserInputs {
+  firstName: string;
+  lastName: string;
+  mobileNO: number;
   email: string;
   password: string;
 }
@@ -17,7 +20,7 @@ const SignupForm = () => {
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<UserInputs> = async (data) => {
-    const { email, password } = data;
+    const { firstName, lastName, mobileNO, email, password } = data;
     // const passwordRegex =
     //   /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
@@ -35,12 +38,18 @@ const SignupForm = () => {
     //   navigate("/signup");
     // } else {
     try {
-      const response = await fetch(`${API_ENDPOINT}/Users/Signin`, {
+      const response = await fetch(`${API_ENDPOINT}/Users/Signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          password,
+          mobileNO,
+        }),
       });
       const data = await response.json();
       if (data?.error) {
@@ -48,24 +57,21 @@ const SignupForm = () => {
       }
 
       if (!response.ok) {
-        throw new Error("Signin Failed");
+        throw new Error("Signup Failed");
       }
       // console.log(data?.User);
       localStorage.setItem("authToken", data?.token);
       localStorage.setItem("userData", JSON.stringify(data?.User));
-      toast.success(
-        `Welcome back ${data?.User.firstName} ${data?.User.lastName}`,
-        {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        }
-      );
+      toast.success(`Welcome ${data?.User.firstName} ${data?.User.lastName}`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
       navigate("/chat");
     } catch (error) {
       console.log(`Operation Failed:${error}`);
@@ -89,9 +95,49 @@ const SignupForm = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="text-3xl font-bold text-left text-gray-800 mb-8 pr-6">
-        Signin
+        Signup
       </div>
       <div>
+        <label
+          htmlFor="firstName"
+          className="block text-gray-700 font-semibold mb-2"
+        >
+          First Name
+        </label>
+        <input
+          type="text"
+          id="firstName"
+          placeholder="Bob"
+          {...register("firstName", { required: true })}
+          className={`w-full border rounded-md py-2 px-3 text-gray-700 bg-white leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue  ${
+            errors.firstName
+              ? "focus:shadow-outline-red bg-red-100 shadow-red-200 shadow-sm focus:border-red-400 border-red-200"
+              : ""
+          }`}
+        />
+        {errors.firstName && (
+          <span className="text-red-500 text-sm">This field is required</span>
+        )}
+        <label
+          htmlFor="lastName"
+          className="block text-gray-700 font-semibold mb-2"
+        >
+          Last Name
+        </label>
+        <input
+          type="text"
+          id="lastName"
+          placeholder="richy"
+          {...register("lastName", { required: true })}
+          className={`w-full border rounded-md py-2 px-3 text-gray-700 bg-white leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue  ${
+            errors.lastName
+              ? "focus:shadow-outline-red bg-red-100 shadow-red-200 shadow-sm focus:border-red-400 border-red-200"
+              : ""
+          }`}
+        />
+        {errors.lastName && (
+          <span className="text-red-500 text-sm">This field is required</span>
+        )}
         <label
           htmlFor="email"
           className="block text-gray-700 font-semibold mb-2"
@@ -110,6 +156,27 @@ const SignupForm = () => {
           }`}
         />
         {errors.email && (
+          <span className="text-red-500 text-sm">This field is required</span>
+        )}
+        <label
+          htmlFor="mobileNO"
+          className="block text-gray-700 font-semibold mb-2"
+        >
+          Phone
+        </label>
+        <input
+          type="number"
+          id="mobileNO"
+          maxLength={10}
+          placeholder="1234567890"
+          {...register("mobileNO", { required: true })}
+          className={`w-full border rounded-md py-2 px-3 text-gray-700 bg-white leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue  ${
+            errors.mobileNO
+              ? "focus:shadow-outline-red bg-red-100 shadow-red-200 shadow-sm focus:border-red-400 border-red-200"
+              : ""
+          }`}
+        />
+        {errors.mobileNO && (
           <span className="text-red-500 text-sm">This field is required</span>
         )}
         <label
@@ -135,7 +202,7 @@ const SignupForm = () => {
         <div className="w-full my-3">
           <input
             type="submit"
-            value="Login"
+            value="Sign Up"
             className="w-full text-xl p-2 bg-blue-500 text-white font-bold rounded cursor-pointer"
           />
         </div>
@@ -144,12 +211,12 @@ const SignupForm = () => {
             OR
           </legend>
           <div className="flex text-base items-center justify-center flex-wrap ">
-            Don't have an Account?
+            Already have an Account?
             <Link
-              to="/signup"
+              to="/signin"
               className="text-blue-500 font-bold mx-2 hover:underline"
             >
-              Register
+              Log in
             </Link>
           </div>
         </fieldset>
