@@ -24,42 +24,42 @@ The Chatwave web app is a real-time chat application built using the MERN (Mongo
 1. Clone the repository:
 
    ```bash
-      git clone https://github.com/JavidSumra/ChatWave
+   git clone https://github.com/JavidSumra/ChatWave
    ```
 2. Clone the Backend repository:
 
     ```bash
-       git clone https://github.com/JavidSumra/ChatWave_Backend
+   git clone https://github.com/JavidSumra/ChatWave_Backend
     ```
 3. Navigate to the project directory:
 
     ```bash
-      cd ChatWave
+   cd ChatWave
     ```
 4. Install dependencies for both the client and server:
 
     ```bash
-      cd ChatWave && npm install
-      cd ../ChatWave_Backend && npm install
+   cd ChatWave && npm install
+   cd ../ChatWave_Backend && npm install
     ```
 5. Create a `.env` file in the `ChatWave_Backend` directory with the following content:
 
     ```bash
-      SECRET_TOKEN = JWT_SECRET_TOKEN
-      email = YOUR_EMAIL
-      Password = YOUR_APP_PASSWORD_FOR_EMAIL
-      MONGO_URL = YOUR_MONGODB_CONNECTION_STRING
+   SECRET_TOKEN = JWT_SECRET_TOKEN
+   email = YOUR_EMAIL
+   Password = YOUR_APP_PASSWORD_FOR_EMAIL
+   MONGO_URL = YOUR_MONGODB_CONNECTION_STRING
     ```
 6. Create a `.env` file in the `ChatWave` directory with the following content:   
      ```bash
-        VITE_API_ENDPOINT = http://localhost:3007
+   VITE_API_ENDPOINT = http://localhost:3007
      ``` 
 7. Start the `server` and `client`:
     ```bash
-      # In the ChatWave_Backend directory
+   # In the ChatWave_Backend directory
       npm run start
 
-      # In the ChatWave directory
+   # In the ChatWave directory
       npm run dev
     ```
 8. Open your browser and visit `http://localhost:3007` to access the ChatWave web app.
