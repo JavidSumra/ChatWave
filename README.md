@@ -24,12 +24,12 @@ The Chatwave web app is a real-time chat application built using the MERN (Mongo
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/JavidSumra/ChatWave
+      git clone https://github.com/JavidSumra/ChatWave
    ```
 2. Clone the Backend repository:
 
     ```bash
-      git clone https://github.com/JavidSumra/ChatWave_Backend
+       git clone https://github.com/JavidSumra/ChatWave_Backend
     ```
 3. Navigate to the project directory:
 
@@ -52,7 +52,7 @@ The Chatwave web app is a real-time chat application built using the MERN (Mongo
     ```
 6. Create a `.env` file in the `ChatWave` directory with the following content:   
      ```bash
-     VITE_API_ENDPOINT = http://localhost:3007
+        VITE_API_ENDPOINT = http://localhost:3007
      ``` 
 7. Start the `server` and `client`:
     ```bash
@@ -63,14 +63,3 @@ The Chatwave web app is a real-time chat application built using the MERN (Mongo
       npm run dev
     ```
 8. Open your browser and visit `http://localhost:3007` to access the ChatWave web app.
-
-
-# Contributing
-
-  `If you would like to contribute to the project, please follow the steps below:`
-
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Make your changes and commit them.
-4. Push the changes to your fork.
-5. Submit a pull request.
