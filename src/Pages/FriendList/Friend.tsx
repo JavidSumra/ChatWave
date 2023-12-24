@@ -11,7 +11,9 @@ const User = (User: any) => {
     socket.emit("join_room", { id });
     setCurrentFriend(User);
   };
+
   const { firstName, lastName, _id } = User.User;
+
   return (
     <div
       className="flex w-full hover:bg-purple-900/25 rounded items-center justify-between p-2 cursor-pointer"

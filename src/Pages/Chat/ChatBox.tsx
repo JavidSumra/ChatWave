@@ -10,6 +10,7 @@ const ChatBox = () => {
   const User = JSON.parse(localStorage.getItem("userData") ?? "");
   const { currentFriend } = useContext(FriendContext);
   const { messages } = useContext(MessageContext);
+  
   return (
     <div
       className={`bg-[#0e0b1c] w-full ${
