@@ -15,12 +15,12 @@ const initialData: FriendData = {
 };
 
 interface FriendListContextProps {
-  FriendList: FriendData[];
+  friendList: FriendData[];
   setFriendList: (friends: FriendData[]) => void;
 }
 
 const FriendListContext = createContext<FriendListContextProps>({
-  FriendList: [initialData],
+  friendList: [initialData],
   setFriendList: () => {},
 });
 
@@ -30,7 +30,7 @@ const FriendListProvider: React.FC<React.PropsWithChildren<{}>> = ({
   const [friendList, setFriendList] = useState<FriendData[]>([initialData]);
 
   const valueToShare = {
-    FriendList: [initialData],
+    friendList,
     setFriendList,
   };
 
