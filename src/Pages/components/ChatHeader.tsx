@@ -8,10 +8,10 @@ const ChatHeader = () => {
   const { currentFriend } = useContext(FriendContext);
   if (currentFriend._id) {
     return (
-      <div className="flex items-center justify-between bg-[#131021] w-full border-b dark:border-gray-700 border-gray-900 max-h-[10.4%] h-full">
+      <div className="flex items-center justify-between dark:bg-[#131021] bg-white/100 w-full border-b dark:border-gray-700 border-gray-400 max-h-[10.4%] h-full">
         <div className="flex w-1/4 items-center justify-evenly mx-2">
           <div className="relative flex items-center justify-center">
-            <div className="text-xl w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+            <div className="text-xl w-10 h-10 rounded-full dark:bg-gray-100 bg-gray-300 flex items-center justify-center">
               {currentFriend.firstName.charAt(0).toUpperCase() +
                 currentFriend.lastName.charAt(0).toUpperCase()}
             </div>
@@ -20,7 +20,7 @@ const ChatHeader = () => {
               <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
             </span>
           </div>
-          <div className="text-gray-300">
+          <div className="dark:text-gray-300 text-gray-800">
             <div className="text-lg">
               {currentFriend.firstName + " " + currentFriend.lastName}
             </div>
@@ -28,8 +28,8 @@ const ChatHeader = () => {
           </div>
         </div>
         <div className="flex mx-4 justify-around w-[10%]">
-          <VideoCameraIcon className="w-8 h-8 text-gray-400 cursor-pointer hover:text-blue-500 duration-150" />
-          <InformationCircleIcon className="w-8 h-8 text-gray-400 cursor-pointer hover:text-yellow-500 duration-150" />
+          <VideoCameraIcon className="w-8 h-8 dark:text-gray-400 text-gray-700 cursor-pointer hover:text-blue-500 duration-150" />
+          <InformationCircleIcon className="w-8 h-8 dark:text-gray-400 text-gray-700 cursor-pointer hover:text-yellow-500 duration-150" />
         </div>
       </div>
     );

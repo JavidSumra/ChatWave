@@ -77,14 +77,14 @@ const ChatInput = () => {
           <span className="absolute inset-y-0 flex items-center">
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-full h-12 w-12 transition duration-500 ease-in-out text-gray-200 focus:outline-none"
+              className="inline-flex items-center justify-center rounded-full h-12 w-12 transition duration-500 ease-in-out dark:text-gray-200 text-gray-700 focus:outline-none"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                className="h-6 w-6 text-gray-400"
+                className="h-6 w-6 dark:text-gray-400 text-gray-700"
               >
                 <path
                   strokeLinecap="round"
@@ -99,19 +99,20 @@ const ChatInput = () => {
             value={userInput}
             onChange={(event) => setUserInput(event.target.value)}
             placeholder="Write your message!"
-            className="w-full resize-none focus:outline-none focus:placeholder-gray-400 text-gray-600 focus:text-white placeholder-gray-600 pl-12 bg-purple-950/70 focus:bg-purple-950/75 rounded-md py-3"
+            rows={1}
+            className="w-full resize-none focus:outline-none dark:focus:placeholder-gray-400 focus:placeholder-gray-100 dark:text-gray-600 text-gray-200 dark:focus:text-white focus:text-black dark:placeholder-gray-600 placeholder-gray-100 pl-12 dark:bg-purple-950/70 bg-purple-500/70 dark:focus:bg-purple-950/75 focus:bg-purple-500/75 rounded-md py-3"
           />
           <div className="absolute right-0 items-center inset-y-0 hidden sm:flex">
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-200 focus:outline-none"
+              className="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out dark:text-gray-200 text-gray-600 focus:outline-none"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                className="h-6 w-6 text-gray-200"
+                className="h-6 w-6 dark:text-gray-200 text-gray-700"
               >
                 <path
                   strokeLinecap="round"
@@ -123,14 +124,14 @@ const ChatInput = () => {
             </button>
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-200 focus:outline-none"
+              className="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out dark:text-gray-200 text-gray-800 focus:outline-none"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                className="h-6 w-6 text-gray-200"
+                className="h-6 w-6 dark:text-gray-200 text-gray-700"
               >
                 <path
                   strokeLinecap="round"
@@ -157,7 +158,7 @@ const ChatInput = () => {
             <button
               type="button"
               onClick={sendMsg}
-              className="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-gray-200 focus:outline-none"
+              className="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out dark:text-gray-200 text-gray-700 focus:outline-none"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -46,11 +46,13 @@ const FriedSidebar = () => {
   }, [socket, friendList]);
 
   return (
-    <div className="bg-gray-900 w-[24%] h-screen border-l border-gray-700">
-      <div className="flex items-end justify-end w-full  border-b border-gray-700">
+    <div className="dark:bg-gray-900 bg-white/100  w-[24%] h-screen border-l dark:border-gray-700 border-gray-400 ">
+      <div className="flex items-end justify-end w-full  border-b dark:border-gray-700 border-gray-400">
         <AddNewFriend />
       </div>
-      <div className="text-white font-bold p-2 text-xl">Chats</div>
+      <div className="dark:text-white text-black font-bold p-2 text-xl">
+        Chats
+      </div>
       <div className="overflow-auto h-4/5">
         <div className="py-4 px-1.5 w-full overflow-auto">
           {friendList.map((friend) => (
