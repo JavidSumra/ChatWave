@@ -10,11 +10,12 @@ const ChatBox = () => {
   const User = JSON.parse(localStorage.getItem("userData") ?? "");
   const { currentFriend } = useContext(FriendContext);
   const { messages } = useContext(MessageContext);
+
   return (
     <div
-      className={`bg-[#0e0b1c] w-full ${
+      className={`dark:bg-[#0e0b1c] bg-gray-200 w-full ${
         !currentFriend._id ? "h-full" : "h-[89.5%]"
-      }  text-white font-semibold overflow-hidden`}
+      }  dark:text-white text-black font-semibold overflow-hidden`}
     >
       {currentFriend._id ? (
         <div className="h-[89%] w-full py-2 mx-2 overflow-y-auto">
@@ -33,7 +34,7 @@ const ChatBox = () => {
               key={nanoid()}
             >
               <div className="chat-image avatar">
-                <div className="w-10 h-10 rounded-full bg-gray-800">
+                <div className="w-10 h-10 rounded-full dark:bg-gray-800 bg-gray-100">
                   <div className="flex items-center justify-center h-full">
                     {message.senderId === User._id
                       ? User.firstName.charAt(0).toUpperCase() +
@@ -49,7 +50,9 @@ const ChatBox = () => {
                   : currentFriend.firstName + " " + currentFriend.lastName}
                 <time className="text-xs opacity-50 mx-2">12:45</time>
               </div>
-              <div className="chat-bubble">{message.msg}</div>
+              <div className="chat-bubble dark:bg-gray-700 bg-gray-400">
+                {message.msg}
+              </div>
               <div className="chat-footer opacity-50">Delivered</div>
             </div>
           ))}

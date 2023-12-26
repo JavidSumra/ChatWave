@@ -11,7 +11,9 @@ const User = (User: any) => {
     socket.emit("join_room", { id });
     setCurrentFriend(User);
   };
+
   const { firstName, lastName, _id } = User.User;
+
   return (
     <div
       className="flex w-full hover:bg-purple-900/25 rounded items-center justify-between p-2 cursor-pointer"
@@ -19,7 +21,7 @@ const User = (User: any) => {
     >
       <div>
         <div className="relative flex items-center justify-center">
-          <div className="text-xl w-11 h-11 rounded-full bg-gray-100 flex items-center justify-center">
+          <div className="text-xl w-11 h-11 rounded-full dark:bg-gray-100 bg-gray-600 flex items-center justify-center">
             {firstName.charAt(0).toUpperCase() +
               lastName.charAt(0).toUpperCase()}
           </div>
@@ -29,7 +31,7 @@ const User = (User: any) => {
           </span>
         </div>
       </div>
-      <div className="flex flex-col w-full text-white">
+      <div className="flex flex-col w-full dark:text-white text-black">
         <div className="flex text-lg w-full items-center justify-between font-semibold">
           <div>{firstName + " " + lastName}</div>
           <div className="mr-4 text-xs">8:54 AM</div>
