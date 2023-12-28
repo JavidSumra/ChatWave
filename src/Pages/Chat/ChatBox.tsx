@@ -50,7 +50,7 @@ const ChatBox = () => {
                   : currentFriend.firstName + " " + currentFriend.lastName}
                 <time className="text-xs opacity-50 mx-2">12:45</time>
               </div>
-              <div className="chat-bubble dark:bg-gray-700 bg-gray-400">
+              <div className="chat-bubble dark:bg-gray-700 bg-gray-400 text-black dark:text-white">
                 {message.msg}
               </div>
               <div className="chat-footer opacity-50">Delivered</div>

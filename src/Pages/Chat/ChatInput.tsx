@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import RandomEmoji from "./Emojigenerator";
 import socket from "../../context/socket";
 
@@ -6,6 +6,7 @@ import { FriendContext } from "../../context/CurrentFriend";
 import { Message, MessageContext } from "../../context/Messages";
 
 const ChatInput = () => {
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const User = JSON.parse(localStorage.getItem("userData") ?? "");
 
   const { currentFriend } = useContext(FriendContext);
@@ -28,7 +29,20 @@ const ChatInput = () => {
       ...messages,
       { senderId: User._id, receiverId: currentFriend._id, msg: userInput },
     ]);
+    // Save the current cursor position
+    const cursorPosition = 0;
+
     setUserInput("");
+
+    // Set focus back to the textarea
+    if (textAreaRef.current) {
+      // Use setTimeout to ensure cursor position is set after the state update
+
+      setTimeout(() => {
+        textAreaRef.current?.setSelectionRange(cursorPosition, cursorPosition);
+      }, 0);
+      textAreaRef.current.value = "";
+    }
   };
 
   const handleKeyDown = (event: any) => {
@@ -96,11 +110,12 @@ const ChatInput = () => {
             </button>
           </span>
           <textarea
+            ref={textAreaRef}
             value={userInput}
             onChange={(event) => setUserInput(event.target.value)}
             placeholder="Write your message!"
             rows={1}
-            className="w-full resize-none focus:outline-none dark:focus:placeholder-gray-400 focus:placeholder-gray-100 dark:text-gray-600 text-gray-200 dark:focus:text-white focus:text-black dark:placeholder-gray-600 placeholder-gray-100 pl-12 dark:bg-purple-950/70 bg-purple-500/70 dark:focus:bg-purple-950/75 focus:bg-purple-500/75 rounded-md py-3"
+            className="no-scrollbar w-full resize-none focus:outline-none dark:focus:placeholder-gray-400 focus:placeholder-gray-100 dark:text-gray-600 text-gray-200 dark:focus:text-white focus:text-black dark:placeholder-gray-600 placeholder-gray-100 pl-12 dark:bg-purple-950/70 bg-purple-500/70 dark:focus:bg-purple-950/75 focus:bg-purple-500/75 rounded-md py-3"
           />
           <div className="absolute right-0 items-center inset-y-0 hidden sm:flex">
             <button

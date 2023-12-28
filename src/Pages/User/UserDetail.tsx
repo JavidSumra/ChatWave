@@ -8,7 +8,7 @@ import {
   Cog6ToothIcon,
   BellIcon,
   MoonIcon,
-  ArrowRightOnRectangleIcon,
+  ArrowRightStartOnRectangleIcon,
   SunIcon,
 } from "@heroicons/react/24/outline";
 
@@ -42,21 +42,21 @@ const UserDetail = () => {
         </div>
       </div>
       <div className="border-b dark:border-gray-300 border-gray-400">
-        <div className="m-4 flex items-center w-full">
+        <div className="m-2 flex items-center w-full">
           <PhoneIcon className="w-7 h-7 dark:text-white text-black" />
           <div className="dark:text-white text-black px-4">
             <div>{User.mobileNO}</div>
             <div className="text-xs">Phone</div>
           </div>
         </div>
-        <div className="m-4 flex items-center w-full">
+        <div className="m-2 flex items-center w-full">
           <AtSymbolIcon className="w-7 h-7 dark:text-white text-black" />
           <div className="dark:text-white text-black px-4">
             <div>{User.firstName}</div>
             <div className="text-xs">Username</div>
           </div>
         </div>
-        <div className="m-4 flex items-center w-full">
+        <div className="m-2 flex items-center w-full">
           <InformationCircleIcon className="w-7 h-7 dark:text-white text-black" />
           <div className="dark:text-white text-black px-4">
             <div>Product Designer</div>
@@ -65,39 +65,36 @@ const UserDetail = () => {
         </div>
       </div>
       <div>
-        <div className="m-4 flex items-center w-full">
+        <div className="m-2 p-2 flex items-center cursor-pointer hover:bg-purple-900/25 rounded">
           <Cog6ToothIcon className="w-7 h-7 dark:text-white text-black" />
           <div className="dark:text-white text-black px-4">
-            <div>General Settings</div>
+            <div>Settings</div>
           </div>
         </div>
-        <div className="m-4 flex items-center w-full">
+        <div className="m-2 p-2 flex items-center cursor-pointer hover:bg-purple-900/25 rounded">
           <BellIcon className="w-7 h-7 dark:text-white text-black" />
           <div className="dark:text-white text-black px-4">
             <div>Notification</div>
           </div>
         </div>
-        <div className="m-4 flex items-center w-full">
+        <div
+          className="m-2 p-2 flex items-center hover:bg-purple-900/25 rounded cursor-pointer"
+          onClick={toggleTheme}
+        >
           {theme === "dark" ? (
-            <MoonIcon
-              className="w-7 h-7 dark:text-white text-black"
-              onClick={toggleTheme}
-            />
+            <MoonIcon className="w-7 h-7 dark:text-white text-black" />
           ) : (
-            <SunIcon
-              className="w-7 h-7 dark:text-white text-black"
-              onClick={toggleTheme}
-            />
+            <SunIcon className="w-7 h-7 dark:text-white text-black" />
           )}
           <div className="dark:text-white text-black px-4">
             <div>{theme === "dark" ? "Dark " : "Light "}Mode</div>
           </div>
         </div>
         <div
-          className="m-4 flex items-center w-full cursor-pointer"
+          className="m-2 p-2 flex items-center cursor-pointer hover:bg-purple-900/25 rounded"
           onClick={signoutUser}
         >
-          <ArrowRightOnRectangleIcon className="w-7 h-7 dark:text-white text-black" />
+          <ArrowRightStartOnRectangleIcon className="w-7 h-7 dark:text-white text-black" />
           <div className="dark:text-white text-black px-4">
             <div>Signout</div>
           </div>
