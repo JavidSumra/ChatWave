@@ -16,15 +16,12 @@ const User = (User: any) => {
   };
 
   useEffect(() => {
-    console.log(currentFriend);
     setSelectedUserId(currentFriend._id);
-    console.log(selectedUserId);
   }, [currentFriend]);
 
   const { firstName, lastName, _id } = User.User;
 
   useEffect(() => {
-    console.log(selectedUserId);
     socket.on("receive_msg", (data: any) => {
       const condition =
         data?.receiverId == LoggedInUser?._id &&
@@ -34,7 +31,7 @@ const User = (User: any) => {
 
       if (condition) {
         setNotificationCount((prev) => prev + 1);
-      } else if (currentFriend._id == selectedUserId) {
+      } else if (_id == selectedUserId) {
         setNotificationCount(0);
       }
     });
