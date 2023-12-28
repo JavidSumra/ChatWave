@@ -1,6 +1,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { API_ENDPOINT } from "../../config/constant";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 interface UserInputs {
@@ -48,7 +48,7 @@ const SignupForm = () => {
       }
 
       if (!response.ok) {
-        throw new Error("Signup Failed");
+        throw new Error("Signin Failed");
       }
       // console.log(data?.User);
       localStorage.setItem("authToken", data?.token);
@@ -145,12 +145,12 @@ const SignupForm = () => {
           </legend>
           <div className="flex text-base items-center justify-center flex-wrap ">
             Don't have an Account?
-            <a
-              href="/signup"
+            <Link
+              to="/signup"
               className="text-blue-500 font-bold mx-2 hover:underline"
             >
               Register
-            </a>
+            </Link>
           </div>
         </fieldset>
       </div>
