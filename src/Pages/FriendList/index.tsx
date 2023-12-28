@@ -3,6 +3,8 @@ import AddNewFriend from "./AddNewFriend";
 import Friend from "./Friend";
 import { API_ENDPOINT } from "../../config/constant";
 import socket from "../../context/socket";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export interface FriendInterface {
   _id: string;
@@ -15,6 +17,7 @@ export interface FriendInterface {
 }
 
 const FriedSidebar = () => {
+  const navigate = useNavigate();
   const authToken = localStorage.getItem("authToken");
   const [friendList, setFriendList] = useState<FriendInterface[]>([]);
 
@@ -27,7 +30,22 @@ const FriedSidebar = () => {
         Authorization: `Bearer ${authToken}`,
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          toast.info("Error On Server Side Please Login Again", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+          navigate("/signin");
+        }
+        return res.json();
+      })
       .then((data) => {
         setFriendList(data?.Friends);
         socket.emit("friendList", data?.Friends);
@@ -54,7 +72,7 @@ const FriedSidebar = () => {
         Chats
       </div>
       <div className="overflow-auto h-4/5">
-        <div className="py-4 px-1.5 w-full overflow-auto">
+        <div className="py-2 px-1.5 w-full overflow-auto">
           {friendList.map((friend) => (
             <Friend User={friend} key={friend._id} />
           ))}
