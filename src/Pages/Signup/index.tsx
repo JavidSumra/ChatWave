@@ -1,5 +1,5 @@
 import SignupForm from "./SignupForm";
-import SignupIMG from "../../assets/Signup.png";
+// import SignupIMG from "../../assets/Signup.png";
 
 const Signup = () => {
   return (
@@ -8,9 +8,9 @@ const Signup = () => {
         <div className="w-full">
           <SignupForm />
         </div>
-        <div className="flex items-center justify-center  w-xl mx-2 max-[634px]:hidden">
+        {/* <div className="flex items-center justify-center  w-xl mx-2 max-[634px]:hidden">
           <img src={SignupIMG} alt="sportsImage" />
-        </div>
+        </div> */}
       </div>
     </div>
   );
